@@ -1,0 +1,134 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importa la fuente Oswald para títulos y Roboto para el cuerpo */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+
+/* Importa un tema predefinido de Angular Material.
+   Lo usaremos como base, pero SOBRESCRIBIREMOS sus colores
+   'primary', 'accent' y 'warn' con nuestros colores personalizados.
+*/
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+html, body {
+  height: 100%; /* Asegura que html y body ocupen el 100% de la altura de la ventana */
+}
+
+body {
+  margin: 0; /* Elimina el margen predeterminado del navegador */
+  font-family: Roboto, "Helvetica Neue", sans-serif; /* Fuente por defecto para el texto del cuerpo */
+
+  /* Fondo degradado sutil de gris claro a gris muy suave para el cuerpo de la página */
+  background: linear-gradient(135deg, #F9F9F9 0%, #EFEFEF 100%);
+  min-height: 100vh; /* Asegura que el degradado cubra toda la altura de la ventana */
+  color: #333; /* Color de texto por defecto para el cuerpo (gris oscuro) */
+}
+
+/* Estilos para los títulos usando la fuente Oswald */
+h1, h2, h3, h4, h5, h6, .mat-card-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700; /* Negrita para los títulos */
+  color: #212121; /* Un gris muy oscuro, casi negro, para los títulos fuera del navbar */
+}
+
+/* --- COLORES DE LA PÁGINA: Inspirados en Goodyear, AZUL MÁS OSCURO --- */
+
+/* Azul Primario (para Navbar, Botones principales) */
+.mat-toolbar.mat-primary,
+.mat-mdc-button.mat-primary,
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-fab.mat-primary,
+.mat-mdc-mini-fab.mat-primary {
+  background-color: #003F80 !important; /* Azul más oscuro que el Goodyear original */
+  color: white !important;
+}
+
+/* Color del texto dentro del Navbar (Toolbar) */
+.mat-toolbar {
+  color: #F8F8F8; /* Texto blanco pálido */
+}
+
+/* Asegura que los enlaces y el ícono también sean blanco pálido dentro del toolbar */
+.mat-toolbar a.mat-button,
+.mat-toolbar button.mat-icon-button,
+.mat-toolbar span {
+    color: #F8F8F8 !important;
+}
+
+/* Amarillo Acento (para Botones secundarios, resaltes) */
+.mat-mdc-button.mat-accent,
+.mat-mdc-raised-button.mat-accent,
+.mat-mdc-fab.mat-accent,
+.mat-mdc-mini-fab.mat-accent {
+  background-color: #FEDB00 !important; /* Amarillo Goodyear */
+  color: #333333 !important; /* Texto oscuro para el amarillo */
+}
+
+/* Gris de Advertencia/Neutro (para elementos menos prominentes o de advertencia si los usas) */
+.mat-mdc-button.mat-warn,
+.mat-mdc-raised-button.mat-warn,
+.mat-mdc-fab.mat-warn,
+.mat-mdc-mini-fab.mat-warn {
+  background-color: #757575 !important; /* Gris medio */
+  color: white !important;
+}
+
+
+/* --- ESTILOS DE RESALTE (usando el Amarillo) --- */
+
+/* Borde amarillo en las tarjetas de oferta al pasar el mouse */
+.offer-card {
+  border: 1px solid #E0E0E0; /* Borde gris claro por defecto */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición suave */
+}
+
+.offer-card:hover {
+  border-color: #FEDB00; /* Borde amarillo al pasar el mouse */
+  box-shadow: 0 4px 12px rgba(254, 219, 0, 0.3); /* Sombra amarilla sutil */
+}
+
+/* Clase para texto amarillo de resalte (puedes usarla en cualquier `span`, `p`, etc.) */
+.text-highlight-yellow {
+    color: #FEDB00;
+    font-weight: 700;
+}
+
+/* Clase para un borde amarillo en cualquier otro elemento que quieras destacar */
+.border-highlight-yellow {
+    border: 2px solid #FEDB00;
+    padding: 10px; /* Ejemplo de padding para que se vea el borde */
+    border-radius: 4px; /* Bordes ligeramente redondeados */
+}
+
+/* Fondo para el Footer (usando el azul oscuro principal) */
+.footer-background {
+  background-color: #003F80; /* El mismo azul oscuro del Primary */
+  color: white;
+}
+
+/* Ajustar el estilo de las tarjetas para el carrusel (mover a autopart-list.component.css) */
+/* NOTA: Estas reglas ya están en autopart-list.component.css, pero las mantengo aquí por si las necesitas globalmente */
+.card-grid {
+  display: flex;
+  flex-wrap: nowrap; /* Impide que las tarjetas salten a la siguiente línea */
+  overflow-x: auto; /* Permite el scroll horizontal si el contenido es mayor que el contenedor */
+  -webkit-overflow-scrolling: touch; /* Mejorar el scroll en dispositivos iOS */
+  scroll-snap-type: x mandatory; /* Hace que el scroll se "enganche" a cada tarjeta */
+  padding: 20px 0; /* Un poco de padding arriba y abajo para el scroll */
+  gap: 20px; /* Espacio entre las tarjetas */
+  justify-content: flex-start; /* Alinea las tarjetas al inicio del contenedor */
+  margin: 0 auto; /* Centra el contenedor del grid */
+  max-width: 100%; /* Asegura que no se desborde */
+  /* Opcional: Ocultar la barra de scroll en algunos navegadores */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.card-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+app-offer-card {
+    flex-shrink: 0; /* Evita que las tarjetas se encojan */
+    scroll-snap-align: start; /* Para que cada tarjeta se "enganche" al inicio */
+}

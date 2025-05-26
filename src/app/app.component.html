@@ -1,0 +1,108 @@
+<div class="top-bar-goodyear">
+  <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-link-top">
+    <mat-icon fontIcon="whatsapp"></mat-icon>
+    Chatea con nosotros por WhatsApp
+  </a>
+  <span class="spacer"></span>
+  <a href="#" class="all-sites-link">
+    <mat-icon fontIcon="link"></mat-icon> TODOS LOS SITIOS TU EMPRESA
+  </a>
+</div>
+
+<mat-toolbar color="primary" [class.hidden]="hideNavbar">
+  <a routerLink="/" class="logo-link">
+    <span>Auto Part</span>
+    </a>
+
+  <span class="spacer"></span>
+
+  <nav>
+    <a mat-button routerLink="/inicio">Inicio</a>
+    <a mat-button routerLink="/ofertas">Ofertas</a>
+    <a mat-button routerLink="/sucursales">Sucursales</a>
+    <a mat-button routerLink="/contacto">Contáctanos</a>
+  </nav>
+  <div class="nav-icons">
+    <a mat-icon-button routerLink="/carrito" class="cart-icon-button">
+      <mat-icon fontIcon="shopping_cart"></mat-icon>
+    </a>
+  </div>
+</mat-toolbar>
+
+<div class="banner" [style.backgroundImage]="'url(' + bannerImageUrl + ')'">
+  </div>
+
+<router-outlet></router-outlet>
+
+<footer class="app-footer footer-background">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>PRODUCTOS POR CATEGORÍA</h3>
+      <ul>
+        <li><a href="#" class="footer-link">Filtros</a></li>
+        <li><a href="#" class="footer-link">Frenos</a></li>
+        <li><a href="#" class="footer-link">Amortiguadores</a></li>
+        <li><a href="#" class="footer-link">Correas</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>PRODUCTOS POR TIPO DE VEHÍCULO</h3>
+      <ul>
+        <li><a href="#" class="footer-link">Autos</a></li>
+        <li><a href="#" class="footer-link">Camionetas/SUV</a></li>
+        <li><a href="#" class="footer-link">Camiones/Buses</a></li>
+        <li><a href="#" class="footer-link">Motos</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>CÓMO COMPRAR</h3>
+      <ul>
+        <li><a href="#" class="footer-link">Guía de Compra</a></li>
+        <li><a href="#" class="footer-link">Encontrar Tienda/Sucursal</a></li>
+        <li><a href="#" class="footer-link">Promociones y Ofertas</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>SOBRE LA EMPRESA</h3>
+      <ul>
+        <li><a href="#" class="footer-link">Preguntas Frecuentes</a></li>
+        <li><a href="#" class="footer-link">Contáctanos</a></li>
+        <li><a href="#" class="footer-link">Trabaja con Nosotros</a></li>
+        <li><a href="#" class="footer-link">Política de Privacidad</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h3>CONVERSE CON NOSOTROS</h3>
+      <p>Déjenos saber en qué le podemos ayudar.</p>
+      <p>Llame: <a href="tel:+56912345678" class="footer-link">9-12345678</a></p>
+      <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-button mat-flat-button mat-accent">
+        <mat-icon fontIcon="whatsapp" class="whatsapp-icon"></mat-icon>
+        Chatea con nosotros por WhatsApp
+      </a>
+    </div>
+
+    <div class="footer-social">
+      <h3>SÍGUENOS</h3>
+      <div class="social-icons">
+        <a href="#" target="_blank" class="social-icon"><mat-icon fontIcon="facebook"></mat-icon></a>
+        <a href="#" target="_blank" class="social-icon"><mat-icon fontIcon="youtube"></mat-icon></a>
+        <a href="#" target="_blank" class="social-icon"><mat-icon fontIcon="linkedin"></mat-icon></a>
+        <a href="#" target="_blank" class="social-icon"><mat-icon fontIcon="instagram"></mat-icon></a>
+      </div>
+      <p class="share-text">COMPARTE ESTE SITIO</p>
+      <button mat-flat-button color="primary">Me gusta</button>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} Tu Empresa. Todos los derechos reservados.</p>
+    <div class="footer-links-bottom">
+      <a href="#" class="footer-link">Términos de Uso y Política de Privacidad</a>
+      <a href="#" class="footer-link">Mapa del Sitio</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,35 @@
+/* src/app/autopart-list/autopart-list.component.css */
+
+/* Hero Section Styles */
+.hero-section {
+  /* Degradado de azul oscuro a un azul un poco más oscuro */
+  background: linear-gradient(135deg, #003F80 0%, #003066 100%);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.banner {
+  /* background-image: url('../../assets/imagenes/banner.png'); <--- Elimina o comenta esta línea */
+  background-size: cover; /* Para que la imagen cubra todo el banner */
+  background-position: center; /* Para centrar la imagen */
+  height: 300px; /* Ajusta la altura que desees para tu banner */
+  width: 100%; /* Para que el banner ocupe todo el ancho del contenedor */
+  display: flex; /* Opcional */
+  justify-content: center; /* Opcional */
+  align-items: center; /* Opcional */
+  color: white; /* Opcional */
+  text-align: center; /* Opcional */
+}
+
+/* Ya no necesitamos el overlay ::before, puedes eliminar este bloque */
+/* .hero-section::before { ... } */
+
+/* ... (resto del código del hero-content y más abajo) ... */

@@ -1,0 +1,9 @@
+<div class="banner" [style.backgroundImage]="'url(' + bannerImageUrl + ')'">
+  <div class="offers-container">
+    <div class="card-grid">
+    @for (offer of offers; track offer.id) {
+      <app-offer-card [offer]="offer"></app-offer-card>
+    }
+    </div>
+  </div>
+</div>

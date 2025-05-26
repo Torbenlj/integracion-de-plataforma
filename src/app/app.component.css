@@ -1,0 +1,326 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Estilos de la barra superior amarilla (similar a Goodyear) */
+.top-bar-goodyear {
+  background-color: #FEDB00; /* Amarillo Goodyear */
+  color: #333333; /* Texto oscuro para contrastar */
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between; /* Espacio entre WhatsApp y Sitios */
+  align-items: center;
+  font-size: 0.85em;
+  font-weight: 500;
+  position: fixed; /* Fijo en la parte superior */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001; /* Más alto que el navbar principal */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.whatsapp-link-top, .all-sites-link {
+  color: #333333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.whatsapp-link-top:hover, .all-sites-link:hover {
+    color: #003F80; /* Azul oscuro al pasar el mouse */
+}
+
+.whatsapp-link-top mat-icon, .all-sites-link mat-icon {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+/* Estilos para el navbar principal */
+mat-toolbar {
+  position: fixed; /* Se queda en la parte superior */
+  top: 40px; /* Debajo de la barra amarilla (ajusta si la barra amarilla es más alta) */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: top 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  height: 64px; /* Altura estándar del toolbar */
+  display: flex;
+  align-items: center;
+  padding: 0 20px; /* Padding horizontal */
+}
+
+mat-toolbar.hidden {
+  top: -64px; /* Oculta el navbar moviéndolo hacia arriba */
+}
+
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.app-logo-text {
+    font-family: 'Righteous', cursive;
+    font-size: 2.2em; /* Hazlo un poco más grande para que destaque */
+    font-weight: 400;
+    color: #FEDB00 !important; /* ¡Color amarillo! Usamos !important */
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Navegación principal */
+nav {
+    display: flex;
+    gap: 15px; /* Espacio entre los enlaces de navegación */
+    margin: 0 20px; /* Margen para separar de logo y íconos */
+}
+
+nav a.mat-button {
+  color: rgb(255, 255, 255); /* Color normal del texto de los enlaces */
+  text-transform: uppercase; /* MAYÚSCULAS como Goodyear */
+  font-weight: 500;
+  padding: 0 10px;
+  height: 48px; /* Altura del botón para centrar bien */
+  line-height: 48px; /* Mismo que la altura para centrar el texto */
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+nav a.mat-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo muy sutil al pasar el mouse */
+  color: #FEDB00 !important; /* ¡Texto amarillo al pasar el mouse! Usamos !important */
+}
+
+/* Iconos de la derecha (carrito, distribuidores) */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre los botones de íconos */
+}
+
+.nav-icons .icon-text-button {
+  display: flex;
+  align-items: center;
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0 8px;
+  height: 48px;
+  line-height: 48px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-icons .icon-text-button mat-icon {
+  margin-right: 5px;
+}
+
+.nav-icons .icon-text-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FEDB00 !important; /* Íconos/texto amarillo al pasar el mouse */
+}
+
+.nav-icons .cart-icon-button {
+  color: white;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-icons .cart-icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FEDB00 !important; /* Ícono amarillo al pasar el mouse */
+}
+
+
+/* --- Estilos del Footer --- */
+.app-footer {
+  padding: 40px 20px;
+  background-color: #003F80; /* Usamos el azul oscuro principal */
+  color: white;
+  margin-top: 50px; /* Espacio superior para separar del contenido */
+  font-family: 'Roboto', sans-serif;
+  border-top: 5px solid #FEDB00; /* Borde superior amarillo en el footer, como Goodyear */
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.footer-section, .footer-contact, .footer-social {
+  flex: 1 1 200px;
+  margin-bottom: 20px;
+}
+
+.footer-section h3, .footer-contact h3, .footer-social h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: #FEDB00; /* Títulos del footer en amarillo */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-link, .whatsapp-link, .social-icon {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover, .whatsapp-link:hover, .social-icon:hover {
+  color: #FEDB00; /* Amarillo al pasar el mouse */
+}
+
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  background-color: #25D366 !important; /* Verde de WhatsApp */
+  padding: 8px 15px !important;
+  border-radius: 5px !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.whatsapp-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.social-icons .mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
+  color: rgb(255, 255, 255);
+}
+
+.social-icons .social-icon:hover .mat-icon {
+    color: #FEDB00;
+}
+
+.share-text {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.footer-links-bottom a {
+  margin: 0 10px;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 960px) {
+    nav {
+      display: none;
+    }
+    mat-toolbar {
+      justify-content: space-between;
+    }
+}
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section, .footer-contact, .footer-social {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .top-bar-goodyear {
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px 10px;
+  }
+
+  mat-toolbar {
+    height: 56px;
+    top: 30px;
+  }
+
+  mat-toolbar.hidden {
+    top: -56px;
+  }
+
+  .logo-link {
+    font-size: 1.5em;
+  }
+
+  .nav-icons {
+    gap: 5px;
+  }
+
+  .nav-icons .icon-text-button span {
+      display: none;
+  }
+
+  .nav-icons .icon-text-button mat-icon {
+      margin-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+    .top-bar-goodyear {
+        font-size: 0.75em;
+    }
+    mat-toolbar {
+        padding: 0 10px;
+    }
+}
+
+/* Estilos para el banner */
+.banner {
+  /* background-image: url('../../assets/imagenes/banner.png'); <--- Elimina o comenta esta línea */
+  background-size: cover; /* Para que la imagen cubra todo el banner */
+  background-position: center; /* Para centrar la imagen */
+  height: 300px; /* Ajusta la altura que desees para tu banner */
+  width: 100%; /* Para que el banner ocupe todo el ancho del contenedor */
+  display: flex; /* Opcional */
+  justify-content: center; /* Opcional */
+  align-items: center; /* Opcional */
+  color: white; /* Opcional */
+  text-align: center; /* Opcional */
+}
+/* Opcional: Si quieres superponer un color oscuro para que el texto se vea mejor */
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 64px; /* Ajusta según la altura de tu barra de navegación */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Un negro semi-transparente */
+  z-index: -1; /* Para que esté detrás del contenido del banner */
+}
+
+/* Asegúrate de que el contenido del banner esté por encima de la capa oscura si la usas */
+.banner > * {
+  position: relative;
+  z-index: 1;
+}

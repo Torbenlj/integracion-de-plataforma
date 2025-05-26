@@ -1,0 +1,16 @@
+.offer-card {
+  max-width: 300px; /* Limita el ancho de la tarjeta */
+  margin: 10px; /* Espacio entre tarjetas */
+  flex: 1 1 auto; /* Permite que las tarjetas se ajusten al espacio */
+  display: flex; /* Para organizar el contenido internamente */
+  flex-direction: column; /* Coloca elementos uno debajo del otro */
+}
+
+.offer-card img {
+  height: 200px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+}
+
+mat-card-content {
+    flex-grow: 1; /* Permite que el contenido se estire y ocupe el espacio disponible */
+}
