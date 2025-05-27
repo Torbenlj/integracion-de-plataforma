@@ -12,20 +12,63 @@
 <mat-toolbar color="primary" [class.hidden]="hideNavbar">
   <a routerLink="/" class="logo-link">
     <span>Auto Part</span>
-    </a>
-
-  <span class="spacer"></span>
+  </a>
 
   <nav>
     <a mat-button routerLink="/inicio">Inicio</a>
-    <a mat-button routerLink="/ofertas">Ofertas</a>
+    <button mat-button [matMenuTriggerFor]="productosMenu">
+      Productos
+    </button>
+    <mat-menu #productosMenu="matMenu">
+      <ng-template #menuItemTemplate let-item>
+        <button mat-menu-item [matMenuTriggerFor]="categorySubMenu" *ngIf="item.subcategories">
+          {{ item.name }}
+        </button>
+        <mat-menu #categorySubMenu="matMenu" [overlapTrigger]="false">
+          <button mat-menu-item *ngFor="let subItem of item.subcategories" [routerLink]="subItem.link">
+            {{ subItem.name }}
+          </button>
+        </mat-menu>
+        <button mat-menu-item [routerLink]="item.link" *ngIf="!item.subcategories && !item.subcategories"> {{ item.name }}
+        </button>
+      </ng-template>
+      <ng-container *ngFor="let menuItem of menuItems">
+        <ng-container *ngIf="menuItem.subcategories; else noSubcategories">
+          <button mat-menu-item [matMenuTriggerFor]="categorySubMenu" #categorySubMenuTrigger="matMenuTrigger"> {{ menuItem.name }}
+          </button>
+          <mat-menu #categorySubMenu="matMenu" [overlapTrigger]="false">
+            <button mat-menu-item *ngFor="let subItem of menuItem.subcategories" [routerLink]="subItem.link">
+              {{ subItem.name }}
+            </button>
+          </mat-menu>
+        </ng-container>
+        <ng-template #noSubcategories>
+          <button mat-menu-item [routerLink]="menuItem.link">
+            {{ menuItem.name }}
+          </button>
+        </ng-template>
+      </ng-container>
+    </mat-menu>
+
     <a mat-button routerLink="/sucursales">Sucursales</a>
     <a mat-button routerLink="/contacto">Contáctanos</a>
   </nav>
+
+  <span class="spacer"></span>
+
+  <div class="toolbar-search-container">
+    <mat-form-field appearance="outline" class="rounded-search-bar">
+      <mat-label>Buscar...</mat-label>
+      <input matInput type="text" [(ngModel)]="searchTerm" (keyup.enter)="search()">
+      <button mat-icon-button matSuffix aria-label="Buscar" (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
   <div class="nav-icons">
     <a mat-icon-button routerLink="/carrito" class="cart-icon-button">
-      <mat-icon fontIcon="shopping_cart"></mat-icon>
-    </a>
+  <mat-icon fontIcon="shopping_cart"></mat-icon>
+</a>
   </div>
 </mat-toolbar>
 

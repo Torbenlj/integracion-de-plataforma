@@ -1,16 +1,16 @@
 .offer-card {
-  max-width: 300px; /* Limita el ancho de la tarjeta */
-  margin: 10px; /* Espacio entre tarjetas */
-  flex: 1 1 auto; /* Permite que las tarjetas se ajusten al espacio */
-  display: flex; /* Para organizar el contenido internamente */
-  flex-direction: column; /* Coloca elementos uno debajo del otro */
+  max-width: 300px; 
+  margin: 10px; 
+  flex: 1 1 auto; 
+  display: flex; 
+  flex-direction: column; 
 }
 
 .offer-card img {
-  height: 200px; /* Altura fija para las imágenes */
-  object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+  height: 200px; 
+  object-fit: cover; 
 }
 
 mat-card-content {
-    flex-grow: 1; /* Permite que el contenido se estire y ocupe el espacio disponible */
+    flex-grow: 1; 
 }

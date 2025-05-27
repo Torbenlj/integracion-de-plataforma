@@ -2,21 +2,20 @@
   flex: 1 1 auto;
 }
 
-/* Estilos de la barra superior amarilla (similar a Goodyear) */
 .top-bar-goodyear {
-  background-color: #FEDB00; /* Amarillo Goodyear */
-  color: #333333; /* Texto oscuro para contrastar */
+  background-color: #FEDB00;
+  color: #333333;
   padding: 8px 20px;
   display: flex;
-  justify-content: space-between; /* Espacio entre WhatsApp y Sitios */
+  justify-content: space-between;
   align-items: center;
   font-size: 0.85em;
   font-weight: 500;
-  position: fixed; /* Fijo en la parte superior */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1001; /* Más alto que el navbar principal */
+  z-index: 1001;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
@@ -29,7 +28,7 @@
 }
 
 .whatsapp-link-top:hover, .all-sites-link:hover {
-    color: #003F80; /* Azul oscuro al pasar el mouse */
+  color: #003F80;
 }
 
 .whatsapp-link-top mat-icon, .all-sites-link mat-icon {
@@ -37,68 +36,134 @@
   font-size: 18px;
 }
 
-/* Estilos para el navbar principal */
 mat-toolbar {
-  position: fixed; /* Se queda en la parte superior */
-  top: 40px; /* Debajo de la barra amarilla (ajusta si la barra amarilla es más alta) */
+  position: fixed;
+  top: 40px;
   left: 0;
   right: 0;
   z-index: 1000;
   transition: top 0.3s ease-in-out;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  height: 64px; /* Altura estándar del toolbar */
+  height: 64px;
   display: flex;
   align-items: center;
-  padding: 0 20px; /* Padding horizontal */
+  padding: 0 16px;
+  justify-content: flex-start;
 }
 
 mat-toolbar.hidden {
-  top: -64px; /* Oculta el navbar moviéndolo hacia arriba */
+  top: -64px;
 }
 
 .logo-link {
   text-decoration: none;
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 
 .app-logo-text {
-    font-family: 'Righteous', cursive;
-    font-size: 2.2em; /* Hazlo un poco más grande para que destaque */
-    font-weight: 400;
-    color: #FEDB00 !important; /* ¡Color amarillo! Usamos !important */
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'Righteous', cursive;
+  font-size: 2.2em;
+  font-weight: 400;
+  color: #FEDB00 !important;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Navegación principal */
 nav {
-    display: flex;
-    gap: 15px; /* Espacio entre los enlaces de navegación */
-    margin: 0 20px; /* Margen para separar de logo y íconos */
+  display: flex;
+  gap: 10px;
 }
 
 nav a.mat-button {
-  color: rgb(255, 255, 255); /* Color normal del texto de los enlaces */
-  text-transform: uppercase; /* MAYÚSCULAS como Goodyear */
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
   font-weight: 500;
   padding: 0 10px;
-  height: 48px; /* Altura del botón para centrar bien */
-  line-height: 48px; /* Mismo que la altura para centrar el texto */
+  height: 48px;
+  line-height: 48px;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 nav a.mat-button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo muy sutil al pasar el mouse */
-  color: #FEDB00 !important; /* ¡Texto amarillo al pasar el mouse! Usamos !important */
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FEDB00 !important;
 }
 
-/* Iconos de la derecha (carrito, distribuidores) */
+.toolbar-search-container {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.rounded-search-bar {
+  width: 220px;
+  height: 40px;
+}
+
+.rounded-search-bar .mat-mdc-form-field-flex {
+  height: 40px;
+  align-items: center;
+  border-radius: 20px !important;
+}
+
+.rounded-search-bar .mat-mdc-text-field-wrapper {
+  height: 40px !important;
+}
+
+.rounded-search-bar .mat-mdc-form-field-infix {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  height: auto !important;
+  line-height: normal;
+}
+
+.rounded-search-bar input.mat-mdc-input-element {
+  color: white !important;
+  caret-color: white !important;
+  font-size: 0.9em;
+  padding-left: 5px;
+}
+
+.rounded-search-bar .mat-mdc-floating-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+}
+.rounded-search-bar.mat-form-field-should-float .mat-mdc-floating-label {
+  transform: translateY(-110%) scale(0.75);
+}
+
+.rounded-search-bar input.mat-mdc-input-element::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+  opacity: 1;
+}
+
+.rounded-search-bar .mat-mdc-notched-outline > * {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+.rounded-search-bar:hover .mat-mdc-notched-outline > * {
+  border-color: white !important;
+}
+.rounded-search-bar.mat-focused .mat-mdc-notched-outline > * {
+  border-color: #FEDB00 !important;
+  border-width: 2px !important;
+}
+
+.rounded-search-bar .mat-mdc-button-persistent-ripple::before,
+.rounded-search-bar .mat-mdc-button-ripple::before {
+    background-color: transparent !important;
+}
+.rounded-search-bar button mat-icon {
+  color: white !important;
+}
+
 .nav-icons {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espacio entre los botones de íconos */
+  gap: 10px;
 }
+
 
 .nav-icons .icon-text-button {
   display: flex;
@@ -119,7 +184,7 @@ nav a.mat-button:hover {
 
 .nav-icons .icon-text-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  color: #FEDB00 !important; /* Íconos/texto amarillo al pasar el mouse */
+  color: #FEDB00 !important;
 }
 
 .nav-icons .cart-icon-button {
@@ -129,18 +194,17 @@ nav a.mat-button:hover {
 
 .nav-icons .cart-icon-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  color: #FEDB00 !important; /* Ícono amarillo al pasar el mouse */
+  color: #FEDB00 !important;
 }
 
 
-/* --- Estilos del Footer --- */
 .app-footer {
   padding: 40px 20px;
-  background-color: #003F80; /* Usamos el azul oscuro principal */
+  background-color: #003F80;
   color: white;
-  margin-top: 50px; /* Espacio superior para separar del contenido */
+  margin-top: 50px;
   font-family: 'Roboto', sans-serif;
-  border-top: 5px solid #FEDB00; /* Borde superior amarillo en el footer, como Goodyear */
+  border-top: 5px solid #FEDB00;
 }
 
 .footer-container {
@@ -161,7 +225,7 @@ nav a.mat-button:hover {
   font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
   margin-bottom: 15px;
-  color: #FEDB00; /* Títulos del footer en amarillo */
+  color: #FEDB00;
 }
 
 .footer-section ul {
@@ -181,14 +245,14 @@ nav a.mat-button:hover {
 }
 
 .footer-link:hover, .whatsapp-link:hover, .social-icon:hover {
-  color: #FEDB00; /* Amarillo al pasar el mouse */
+  color: #FEDB00;
 }
 
 .whatsapp-button {
   display: inline-flex;
   align-items: center;
   margin-top: 10px;
-  background-color: #25D366 !important; /* Verde de WhatsApp */
+  background-color: #25D366 !important;
   padding: 8px 15px !important;
   border-radius: 5px !important;
   color: white !important;
@@ -209,7 +273,7 @@ nav a.mat-button:hover {
 }
 
 .social-icons .social-icon:hover .mat-icon {
-    color: #FEDB00;
+  color: #FEDB00;
 }
 
 .share-text {
@@ -230,16 +294,21 @@ nav a.mat-button:hover {
   margin: 0 10px;
 }
 
-/* Media queries para responsividad */
-@media (max-width: 960px) {
-    nav {
-      display: none;
-    }
-    mat-toolbar {
-      justify-content: space-between;
-    }
-}
 
+@media (max-width: 960px) {
+  nav {
+    display: none;
+  }
+  .toolbar-search-container {
+    margin-right: 10px;
+  }
+  .rounded-search-bar {
+    width: 100%;
+  }
+  mat-toolbar {
+    justify-content: space-between;
+  }
+}
 
 @media (max-width: 768px) {
   .footer-container {
@@ -257,11 +326,12 @@ nav a.mat-button:hover {
     flex-direction: column;
     gap: 5px;
     padding: 5px 10px;
+
   }
 
   mat-toolbar {
     height: 56px;
-    top: 30px;
+
   }
 
   mat-toolbar.hidden {
@@ -269,57 +339,65 @@ nav a.mat-button:hover {
   }
 
   .logo-link {
-    font-size: 1.5em;
+
   }
+  .logo-link span {
+      font-size: 1.2em;
+  }
+
 
   .nav-icons {
     gap: 5px;
   }
 
   .nav-icons .icon-text-button span {
-      display: none;
+    display: none;
   }
 
   .nav-icons .icon-text-button mat-icon {
-      margin-right: 0;
+    margin-right: 0;
   }
 }
 
 @media (max-width: 480px) {
-    .top-bar-goodyear {
-        font-size: 0.75em;
-    }
-    mat-toolbar {
-        padding: 0 10px;
-    }
+  .top-bar-goodyear {
+    font-size: 0.75em;
+  }
+  mat-toolbar {
+    padding: 0 10px;
+  }
+  .toolbar-search-container {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
-/* Estilos para el banner */
+
 .banner {
-  /* background-image: url('../../assets/imagenes/banner.png'); <--- Elimina o comenta esta línea */
-  background-size: cover; /* Para que la imagen cubra todo el banner */
-  background-position: center; /* Para centrar la imagen */
-  height: 300px; /* Ajusta la altura que desees para tu banner */
-  width: 100%; /* Para que el banner ocupe todo el ancho del contenedor */
-  display: flex; /* Opcional */
-  justify-content: center; /* Opcional */
-  align-items: center; /* Opcional */
-  color: white; /* Opcional */
-  text-align: center; /* Opcional */
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  margin-top: calc(40px + 64px);
 }
-/* Opcional: Si quieres superponer un color oscuro para que el texto se vea mejor */
+
 .banner::before {
   content: "";
   position: absolute;
-  top: 64px; /* Ajusta según la altura de tu barra de navegación */
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Un negro semi-transparente */
-  z-index: -1; /* Para que esté detrás del contenido del banner */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
 }
 
-/* Asegúrate de que el contenido del banner esté por encima de la capa oscura si la usas */
 .banner > * {
   position: relative;
   z-index: 1;
