@@ -1,0 +1,33 @@
+<div class="products-container">
+  <h1 class="products-title">Nuestros Productos</h1>
+
+  <div class="product-grid">
+    <div *ngFor="let producto of productos" class="product-card">
+      <div class="product-image-wrapper">
+        <img [src]="producto.imagenUrl" alt="{{ producto.nombre }}" class="product-image">
+      </div>
+      <div class="product-info">
+        <h2 class="product-name">{{ producto.nombre }}</h2>
+        <p class="product-description">{{ producto.descripcion }}</p>
+        <div class="product-meta">
+          <span class="product-category">Categoría: {{ producto.categoria }}</span>
+          <span class="product-brand">Marca: {{ producto.marca }}</span>
+        </div>
+      </div>
+      <div class="product-prices">
+        <p class="price-transferencia">{{ producto.precioTransferencia | currency:'CLP':'symbol':'1.0-0' }} Transferencia</p>
+        <p class="price-otros-medios">{{ producto.precioOtrosMedios | currency:'CLP':'symbol':'1.0-0' }} Otros medios de pago</p>
+      </div>
+      <div class="product-actions">
+        <button mat-raised-button color="primary" (click)="agregarAlCarrito(producto)">
+          <mat-icon>shopping_cart</mat-icon> Añadir al Carrito
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="productos.length === 0" class="no-products-message">
+    <p>No hay productos disponibles en este momento.</p>
+    <a routerLink="/" mat-flat-button color="accent">Volver al Inicio</a>
+  </div>
+</div>

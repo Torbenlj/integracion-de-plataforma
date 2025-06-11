@@ -1,0 +1,66 @@
+/* Reutiliza los estilos base de iniciar-sesion.component.css */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  background-color: #f0f2f5;
+  padding: 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 450px; /* Un poco más ancho para el registro */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-header .mat-card-title {
+  font-size: 1.8em;
+  color: #333;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.register-button {
+  background-color: #FEDB00 !important; /* Amarillo de tu marca */
+  color: #333 !important; /* Texto oscuro para el amarillo */
+  font-weight: bold;
+  padding: 10px 0;
+  border-radius: 4px;
+}
+
+.register-button:hover {
+  background-color: #FFEA6B !important; /* Amarillo más claro en hover */
+}
+
+.auth-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.auth-footer p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.auth-footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}

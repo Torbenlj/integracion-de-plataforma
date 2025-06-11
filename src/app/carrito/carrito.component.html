@@ -1,31 +1,70 @@
-<div class="carrito-container">
-  <h1>Carrito de Compras</h1>
+<div class="carrito-page-wrapper">
+  <h1 class="carrito-titulo">Tu carro (<span *ngIf="carritoItems.length > 0">{{ carritoItems.length }} producto<span *ngIf="carritoItems.length !== 1">s</span></span><span *ngIf="carritoItems.length === 0">0 productos</span>)</h1>
 
   <ng-container *ngIf="carritoItems.length > 0; else carritoVacio">
-    <ul class="carrito-list">
-      <li *ngFor="let item of carritoItems">
-        <div class="item-info">
-          <img [src]="item.imagen" alt="{{ item.nombre }}">
-          <h3>{{ item.nombre }}</h3>
-          <p>Precio: {{ item.precio | currency }}</p>
-          <div class="quantity-controls">
-            <button (click)="disminuirCantidad(item)">-</button>
-            <span>Cantidad: {{ item.cantidad }}</span>
-            <button (click)="aumentarCantidad(item)">+</button>
-          </div>
-          <button class="remove-button" (click)="eliminarItem(item)">Eliminar</button>
-        </div>
-      </li>
-    </ul>
+    <div class="row carrito-content-row">
+      <div class="col-12 col-md-8 carrito-items-column">
+        <ul class="carrito-list">
+          <li *ngFor="let item of carritoItems" class="carrito-item-card">
+            <div class="item-image-wrapper">
+              <img [src]="item.imagen" alt="{{ item.nombre }}" class="item-thumbnail">
+            </div>
+            <div class="item-details">
+              <h3 class="item-name">{{ item.nombre }}</h3>
+              <p class="item-id">ID {{ item.id }}</p>
+              <p class="item-description">{{ item.descripcion }}</p>
+            </div>
+            <div class="item-quantity-controls">
+              <button mat-icon-button (click)="disminuirCantidad(item)" [disabled]="item.cantidad <= 1">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span class="item-quantity-display">{{ item.cantidad }}</span>
+              <button mat-icon-button (click)="aumentarCantidad(item)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+            <div class="item-prices">
+              <p class="price-transferencia">{{ item.precio | currency:'CLP':'symbol':'1.0-0' }} Transferencia</p>
+              <p class="price-otros-medios">{{ (item.precio * 1.05) | currency:'CLP':'symbol':'1.0-0' }} Otros medios de pago</p>
+            </div>
+            <div class="item-actions">
+              <button class="remove-button" (click)="eliminarItem(item)">Eliminar</button>
+            </div>
+          </li>
+        </ul>
+        <button class="vaciar-carrito-button" (click)="vaciarCarrito()">Vaciar Carro</button>
+      </div>
 
-    <div class="carrito-total">
-      <p>Total: {{ totalCarrito | currency }}</p>
-      <button mat-raised-button color="accent">Finalizar Compra</button>
+      <div class="col-12 col-md-4 carrito-summary-column">
+        <div class="carrito-summary-card">
+          <h2 class="summary-title">Resumen de tu compra</h2>
+          <div class="summary-line">
+            <p>Total transferencia <mat-icon class="info-icon" matTooltip="Este es el precio total usando transferencia.">info</mat-icon></p>
+            <p class="summary-value">{{ totalCarrito | currency:'CLP':'symbol':'1.0-0' }}</p>
+          </div>
+          <div class="summary-line">
+            <p>Total otros medios de pago</p>
+            <p class="summary-value">{{ (totalCarrito * 1.05) | currency:'CLP':'symbol':'1.0-0' }}</p>
+          </div>
+          <div class="shipping-info">
+            <mat-icon>local_shipping</mat-icon>
+            <p>El costo de envío se calculará al añadir la dirección.</p>
+          </div>
+          <button mat-raised-button class="add-products-button" (click)="agregarMasProductos()">
+            Agregar más productos
+          </button>
+          <button mat-raised-button color="primary" class="continue-button" routerLink="/checkout">
+            Continuar
+          </button>
+        </div>
+      </div>
     </div>
   </ng-container>
 
   <ng-template #carritoVacio>
-    <p>Tu carrito está vacío.</p>
-    <a routerLink="/">Volver a la tienda</a>
+    <div class="carrito-vacio-state">
+      <p>Tu carrito está vacío.</p>
+      <a routerLink="/" class="btn btn-primary">Volver a la tienda</a>
+    </div>
   </ng-template>
 </div>

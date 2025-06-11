@@ -1,3 +1,14 @@
+/* src/app/app.component.css */
+
+/* --- ESTILOS GLOBALES PARA EL CUERPO DE LA PÁGINA --- */
+/* Importante para que el contenido no quede debajo de las barras fijas */
+body {
+  margin: 0; /* Elimina el margen predeterminado del navegador */
+  padding-top: 104px; /* Suma de la altura del top-bar (40px) + navbar (64px) */
+  font-family: 'Roboto', sans-serif; /* Puedes ajustar la fuente si usas otra globalmente */
+  background-color: #f0f2f5; /* Un color de fondo suave para la página */
+}
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -11,12 +22,13 @@
   align-items: center;
   font-size: 0.85em;
   font-weight: 500;
-  position: fixed;
-  top: 0;
+  position: fixed; /* Se mantiene fijo en la parte superior de la ventana */
+  top: 0; /* Pegado al borde superior */
   left: 0;
   right: 0;
-  z-index: 1001;
+  z-index: 1001; /* Asegura que esté por encima del navbar */
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  height: 40px; /* Altura fija */
 }
 
 .whatsapp-link-top, .all-sites-link {
@@ -36,25 +48,175 @@
   font-size: 18px;
 }
 
-mat-toolbar {
-  position: fixed;
-  top: 40px;
+/* ------------------------------------------------------------- */
+/* ESTILOS PARA EL NAVBAR PRINCIPAL DE BOOTSTRAP */
+/* ------------------------------------------------------------- */
+.navbar-custom-blue {
+  background-color: #003F80 !important; /* Color principal de tu marca */
+  position: fixed; /* Se mantiene fijo */
+  top: 40px; /* Desplazado 40px hacia abajo (altura de .top-bar-goodyear) */
   left: 0;
   right: 0;
-  z-index: 1000;
-  transition: top 0.3s ease-in-out;
+  z-index: 1000; /* Justo debajo del top-bar */
+  transition: top 0.3s ease-in-out; /* Transición suave para ocultar/mostrar */
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  height: 64px;
+  height: 64px; /* Altura fija del navbar */
   display: flex;
   align-items: center;
   padding: 0 16px;
   justify-content: flex-start;
 }
 
-mat-toolbar.hidden {
-  top: -64px;
+/* Clase para ocultar el navbar (se aplica dinámicamente) */
+.navbar-custom-blue.hidden {
+  top: -64px; /* Desplaza el navbar hacia arriba para ocultarlo */
 }
 
+/* Ajustes para los enlaces de Material dentro del Navbar de Bootstrap */
+.navbar-nav .nav-link {
+  color: white !important; /* Asegura que los enlaces de nav-link sean blancos */
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #FEDB00 !important; /* Color de hover: amarillo de tu marca */
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Estilos para el botón mat-button dentro del navbar */
+.navbar-nav .nav-item .mat-button {
+  color: white !important;
+}
+
+.navbar-nav .nav-item .mat-button:hover {
+  color: #FEDB00 !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Estilos para los íconos de Material dentro del navbar de Bootstrap (ej. carrito) */
+.cart-icon-button {
+  color: white !important;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.cart-icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #FEDB00 !important;
+}
+
+/* ------------------------------------------------------------- */
+/* ESTILOS PARA EL BUSCADOR DENTRO DEL NAVBAR BOOTSTRAP */
+/* ------------------------------------------------------------- */
+.rounded-search-bar-bootstrap {
+  width: 220px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 15px;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  min-width: 150px;
+  max-width: 250px;
+}
+
+.rounded-search-bar-bootstrap .mat-mdc-form-field-flex {
+  height: 40px;
+  align-items: center;
+  border-radius: 20px !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0 5px;
+}
+
+.rounded-search-bar-bootstrap .mat-mdc-text-field-wrapper {
+  height: 40px !important;
+  padding: 0 !important;
+}
+
+.rounded-search-bar-bootstrap .mat-mdc-form-field-infix {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  height: auto !important;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+}
+
+.rounded-search-bar-bootstrap input.mat-mdc-input-element {
+  color: white !important;
+  caret-color: white !important;
+  font-size: 0.9em;
+  padding-left: 10px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.rounded-search-bar-bootstrap .mat-mdc-floating-label {
+  color: rgba(255, 255, 255, 0.7) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  left: 10px !important;
+}
+.rounded-search-bar-bootstrap.mat-form-field-should-float .mat-mdc-floating-label {
+  transform: translateY(-110%) scale(0.75) !important;
+  left: 5px !important;
+}
+
+.rounded-search-bar-bootstrap .mat-mdc-form-field-suffix {
+  padding: 0 8px !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.rounded-search-bar-bootstrap button mat-icon {
+  color: white !important;
+}
+
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
+  background-color: transparent !important;
+}
+
+
+/* ------------------------------------------------------------- */
+/* ESTILOS DEL BANNER */
+/* ------------------------------------------------------------- */
+.banner {
+  width: 100%;
+  height: 400px; /* Altura del banner */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  /* El margin-top ya no es necesario aquí si el padding-top del body es correcto */
+  /* margin-top: calc(40px + 64px); */
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay oscuro para que el texto resalte */
+  z-index: 0;
+}
+
+.banner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ------------------------------------------------------------- */
+/* OTROS ESTILOS (LOGO, FOOTER) */
+/* ------------------------------------------------------------- */
 .logo-link {
   text-decoration: none;
   display: flex;
@@ -71,138 +233,15 @@ mat-toolbar.hidden {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-nav {
-  display: flex;
-  gap: 10px;
+.angular-material-menu {
+  /* Estilos para los menús de Angular Material si son necesarios */
 }
-
-nav a.mat-button {
-  color: rgb(255, 255, 255);
-  text-transform: uppercase;
-  font-weight: 500;
-  padding: 0 10px;
-  height: 48px;
-  line-height: 48px;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-nav a.mat-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #FEDB00 !important;
-}
-
-.toolbar-search-container {
-  margin-left: 15px;
-  margin-right: 15px;
-}
-
-.rounded-search-bar {
-  width: 220px;
-  height: 40px;
-}
-
-.rounded-search-bar .mat-mdc-form-field-flex {
-  height: 40px;
-  align-items: center;
-  border-radius: 20px !important;
-}
-
-.rounded-search-bar .mat-mdc-text-field-wrapper {
-  height: 40px !important;
-}
-
-.rounded-search-bar .mat-mdc-form-field-infix {
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
-  height: auto !important;
-  line-height: normal;
-}
-
-.rounded-search-bar input.mat-mdc-input-element {
-  color: white !important;
-  caret-color: white !important;
-  font-size: 0.9em;
-  padding-left: 5px;
-}
-
-.rounded-search-bar .mat-mdc-floating-label {
-  color: rgba(255, 255, 255, 0.7) !important;
-  top: 50% !important;
-  transform: translateY(-50%);
-}
-.rounded-search-bar.mat-form-field-should-float .mat-mdc-floating-label {
-  transform: translateY(-110%) scale(0.75);
-}
-
-.rounded-search-bar input.mat-mdc-input-element::placeholder {
-  color: rgba(255, 255, 255, 0.7) !important;
-  opacity: 1;
-}
-
-.rounded-search-bar .mat-mdc-notched-outline > * {
-  border-color: rgba(255, 255, 255, 0.7) !important;
-}
-.rounded-search-bar:hover .mat-mdc-notched-outline > * {
-  border-color: white !important;
-}
-.rounded-search-bar.mat-focused .mat-mdc-notched-outline > * {
-  border-color: #FEDB00 !important;
-  border-width: 2px !important;
-}
-
-.rounded-search-bar .mat-mdc-button-persistent-ripple::before,
-.rounded-search-bar .mat-mdc-button-ripple::before {
-    background-color: transparent !important;
-}
-.rounded-search-bar button mat-icon {
-  color: white !important;
-}
-
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-
-.nav-icons .icon-text-button {
-  display: flex;
-  align-items: center;
-  color: rgb(255, 0, 0);
-  text-decoration: none;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding: 0 8px;
-  height: 48px;
-  line-height: 48px;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.nav-icons .icon-text-button mat-icon {
-  margin-right: 5px;
-}
-
-.nav-icons .icon-text-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #FEDB00 !important;
-}
-
-.nav-icons .cart-icon-button {
-  color: white;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.nav-icons .cart-icon-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #FEDB00 !important;
-}
-
 
 .app-footer {
   padding: 40px 20px;
   background-color: #003F80;
   color: white;
-  margin-top: 50px;
+  margin-top: 50px; /* Espacio antes del footer */
   font-family: 'Roboto', sans-serif;
   border-top: 5px solid #FEDB00;
 }
@@ -295,22 +334,26 @@ nav a.mat-button:hover {
 }
 
 
+/* ------------------------------------------------------------- */
+/* MEDIA QUERIES (AJUSTES RESPONSIVOS) */
+/* ------------------------------------------------------------- */
 @media (max-width: 960px) {
-  nav {
-    display: none;
-  }
-  .toolbar-search-container {
-    margin-right: 10px;
-  }
-  .rounded-search-bar {
+  .rounded-search-bar-bootstrap {
     width: 100%;
+    margin-right: 0;
   }
-  mat-toolbar {
-    justify-content: space-between;
+
+  .navbar-custom-blue {
+    padding: 0 10px;
   }
 }
 
 @media (max-width: 768px) {
+  /* Ajuste del padding-top del body para móviles si las barras cambian de altura */
+  body {
+    padding-top: calc(40px + 56px); /* Altura de top-bar (40px) + navbar móvil (56px) = 96px */
+  }
+
   .footer-container {
     flex-direction: column;
     align-items: center;
@@ -326,26 +369,22 @@ nav a.mat-button:hover {
     flex-direction: column;
     gap: 5px;
     padding: 5px 10px;
-
+    height: auto; /* Permite que la barra superior ajuste su altura en móviles */
   }
 
-  mat-toolbar {
-    height: 56px;
-
+  .navbar-custom-blue {
+    height: 56px; /* Ajusta la altura del navbar en móviles */
   }
 
-  mat-toolbar.hidden {
-    top: -56px;
+  .navbar-custom-blue.hidden {
+    top: -56px; /* Ajusta el 'top' oculto a la nueva altura del navbar */
   }
 
-  .logo-link {
-
-  }
   .logo-link span {
       font-size: 1.2em;
   }
 
-
+  /* Las clases nav-icons, icon-text-button no están en tu HTML actual, pero las mantengo si las usas en otro lugar */
   .nav-icons {
     gap: 5px;
   }
@@ -363,42 +402,11 @@ nav a.mat-button:hover {
   .top-bar-goodyear {
     font-size: 0.75em;
   }
-  mat-toolbar {
+  .navbar-custom-blue {
     padding: 0 10px;
   }
-  .toolbar-search-container {
+  .rounded-search-bar-bootstrap {
     margin-left: 5px;
     margin-right: 5px;
   }
-}
-
-
-.banner {
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  position: relative;
-  margin-top: calc(40px + 64px);
-}
-
-.banner::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 0;
-}
-
-.banner > * {
-  position: relative;
-  z-index: 1;
 }

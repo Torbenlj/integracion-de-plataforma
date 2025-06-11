@@ -1,0 +1,39 @@
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <mat-card-header class="auth-header">
+      <mat-card-title>Iniciar Sesión Bodeguero</mat-card-title> </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput formControlName="email" type="email" required>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
+            El correo electrónico es requerido.
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">
+            Ingrese un correo electrónico válido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+            La contraseña es requerida.
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="full-width login-button">
+          Iniciar Sesión Bodeguero
+        </button>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="auth-footer">
+      <p>¿No tienes cuenta? <a routerLink="/registrarse">Regístrate aquí</a></p>
+      <p><a routerLink="/olvide-contrasena">¿Olvidaste tu contraseña?</a></p>
+    </mat-card-actions>
+  </mat-card>
+</div>

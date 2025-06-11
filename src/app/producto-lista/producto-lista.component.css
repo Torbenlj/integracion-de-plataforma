@@ -1,0 +1,182 @@
+/* src/app/producto-lista/producto-lista.component.css */
+
+.products-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products-title {
+  text-align: center;
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas responsivas */
+  gap: 30px; /* Espacio entre tarjetas */
+}
+
+.product-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Para que la imagen no se desborde */
+  display: flex;
+  flex-direction: column; /* Contenido en columna */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-image-wrapper {
+  width: 100%;
+  height: 200px; /* Altura fija para las imágenes */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8; /* Fondo para imágenes con transparencia */
+  border-bottom: 1px solid #eee;
+}
+
+.product-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain; /* Mantiene la proporción y ajusta dentro del contenedor */
+}
+
+.product-info {
+  padding: 15px;
+  flex-grow: 1; /* Permite que la información ocupe el espacio restante */
+}
+
+.product-name {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  height: 2.6em; /* Altura fija para 2 líneas */
+  overflow: hidden; /* Oculta texto si se excede */
+  text-overflow: ellipsis; /* Añade puntos suspensivos */
+}
+
+.product-description {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+  height: 3.6em; /* Altura fija para 3 líneas */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-meta {
+  font-size: 0.85em;
+  color: #888;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-prices {
+  padding: 15px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.price-transferencia {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #003F80; /* Azul de tu marca */
+  margin-bottom: 5px;
+}
+
+.price-otros-medios {
+  font-size: 0.9em;
+  color: #666;
+  text-decoration: line-through; /* Para mostrar que es el precio original si la transferencia es oferta */
+}
+
+.product-actions {
+  padding: 15px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+.product-actions button {
+  width: 100%; /* Botón de carrito ocupa todo el ancho */
+  padding: 12px 0;
+  font-size: 1.1em;
+  text-transform: uppercase;
+}
+
+.product-actions mat-icon {
+  margin-right: 8px;
+}
+
+.no-products-message {
+  text-align: center;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.no-products-message p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .products-container {
+    padding: 20px 10px;
+  }
+  .products-title {
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .product-card {
+    border-radius: 8px;
+  }
+  .product-image-wrapper {
+    height: 180px;
+  }
+  .product-name {
+    font-size: 1.2em;
+  }
+  .product-prices .price-transferencia {
+    font-size: 1.2em;
+  }
+  .product-actions button {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+    gap: 15px;
+  }
+  .product-card {
+    margin-bottom: 15px;
+  }
+  .product-image-wrapper {
+    height: 150px;
+  }
+  .products-title {
+    font-size: 1.8em;
+  }
+}

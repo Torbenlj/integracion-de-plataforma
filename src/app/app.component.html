@@ -9,89 +9,84 @@
   </a>
 </div>
 
-<mat-toolbar color="primary" [class.hidden]="hideNavbar">
-  <a routerLink="/" class="logo-link">
-    <span>Auto Part</span>
-  </a>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom-blue sticky-top" [class.hidden]="hideNavbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Auto Part</a>
 
-  <nav>
-    <a mat-button routerLink="/inicio">Inicio</a>
-    <button mat-button [matMenuTriggerFor]="productosMenu">
-      Productos
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <mat-menu #productosMenu="matMenu">
-      <ng-template #menuItemTemplate let-item>
-        <button mat-menu-item [matMenuTriggerFor]="categorySubMenu" *ngIf="item.subcategories">
-          {{ item.name }}
-        </button>
-        <mat-menu #categorySubMenu="matMenu" [overlapTrigger]="false">
-          <button mat-menu-item *ngFor="let subItem of item.subcategories" [routerLink]="subItem.link">
-            {{ subItem.name }}
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav me-auto">
+        <a class="nav-link" routerLink="/inicio">Inicio</a> <li class="nav-item dropdown d-flex align-items-center">
+          <button mat-button class="nav-link text-white" [matMenuTriggerFor]="productosMenu">
+            Productos
           </button>
-        </mat-menu>
-        <button mat-menu-item [routerLink]="item.link" *ngIf="!item.subcategories && !item.subcategories"> {{ item.name }}
-        </button>
-      </ng-template>
-      <ng-container *ngFor="let menuItem of menuItems">
-        <ng-container *ngIf="menuItem.subcategories; else noSubcategories">
-          <button mat-menu-item [matMenuTriggerFor]="categorySubMenu" #categorySubMenuTrigger="matMenuTrigger"> {{ menuItem.name }}
-          </button>
-          <mat-menu #categorySubMenu="matMenu" [overlapTrigger]="false">
-            <button mat-menu-item *ngFor="let subItem of menuItem.subcategories" [routerLink]="subItem.link">
-              {{ subItem.name }}
-            </button>
+          <mat-menu #productosMenu="matMenu" class="angular-material-menu">
+            <ng-container *ngFor="let menuItem of menuItems">
+              <ng-container *ngIf="menuItem.subcategories; else noSubcategories">
+                <button mat-menu-item [matMenuTriggerFor]="categorySubMenu"> {{ menuItem.name }} </button>
+                <mat-menu #categorySubMenu="matMenu" [overlapTrigger]="false">
+                  <button mat-menu-item *ngFor="let subItem of menuItem.subcategories" [routerLink]="subItem.link">
+                    {{ subItem.name }}
+                  </button>
+                </mat-menu>
+              </ng-container>
+              <ng-template #noSubcategories>
+                <button mat-menu-item [routerLink]="menuItem.link">
+                  {{ menuItem.name }}
+                </button>
+              </ng-template>
+            </ng-container>
           </mat-menu>
-        </ng-container>
-        <ng-template #noSubcategories>
-          <button mat-menu-item [routerLink]="menuItem.link">
-            {{ menuItem.name }}
+        </li>
+
+ <li class="nav-item dropdown d-flex align-items-center">
+          <button mat-button class="nav-link text-white" [matMenuTriggerFor]="loginMenu">
+            Iniciar Sesión 
           </button>
-        </ng-template>
-      </ng-container>
-    </mat-menu>
+          <mat-menu #loginMenu="matMenu" class="angular-material-menu">
+            <button mat-menu-item routerLink="/login-bodeguero">Bodeguero</button>
+            <button mat-menu-item routerLink="/login-cliente">Cliente</button>
+            <button mat-menu-item routerLink="/login-cliente-sku">Cliente SKU</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="/registrarse">Registrarse</button>
+          </mat-menu>
+        </li>
+      </div>
 
-    <a mat-button routerLink="/sucursales">Sucursales</a>
-    <a mat-button routerLink="/contacto">Contáctanos</a>
-  </nav>
+      <form class="d-flex" role="Buscar" (ngSubmit)="search()">
+        <input class="form-control me-2" type="text" placeholder="Buscador" aria-label="Buscar" [(ngModel)]="searchTerm" name="searchTerm"/>
+        <button class="btn btn-outline-warning" type="submit">Buscar</button>
+      </form>
 
-  <span class="spacer"></span>
-
-  <div class="toolbar-search-container">
-    <mat-form-field appearance="outline" class="rounded-search-bar">
-      <mat-label>Buscar...</mat-label>
-      <input matInput type="text" [(ngModel)]="searchTerm" (keyup.enter)="search()">
-      <button mat-icon-button matSuffix aria-label="Buscar" (click)="search()">
-        <mat-icon>search</mat-icon>
-      </button>
-    </mat-form-field>
+      <a mat-icon-button routerLink="/carrito" class="cart-icon-button text-white ms-3">
+        <mat-icon fontIcon="shopping_cart"></mat-icon>
+      </a>
+    </div>
   </div>
-  <div class="nav-icons">
-    <a mat-icon-button routerLink="/carrito" class="cart-icon-button">
-  <mat-icon fontIcon="shopping_cart"></mat-icon>
-</a>
-  </div>
-</mat-toolbar>
+</nav>
 
-<div class="banner" [style.backgroundImage]="'url(' + bannerImageUrl + ')'">
-  </div>
+<div class="banner" [style.backgroundImage]="'url(' + bannerImageUrl + ')'" *ngIf="showBanner">
+</div>
 
 <router-outlet></router-outlet>
 
 <footer class="app-footer footer-background">
   <div class="footer-container">
     <div class="footer-section">
-      <h3>PRODUCTOS POR CATEGORÍA</h3>
-      <ul>
+      <h3>ENSAMBLAJE</h3> <ul>
         <li><a href="#" class="footer-link">Filtros</a></li>
-        <li><a href="#" class="footer-link">Frenos</a></li>
-        <li><a href="#" class="footer-link">Amortiguadores</a></li>
+        <li><a href="#" class="footer-link">Ensamblado</a></li>
+        <li><a href="#" class="footer-link">Neumatico</a></li>
         <li><a href="#" class="footer-link">Correas</a></li>
       </ul>
     </div>
 
     <div class="footer-section">
-      <h3>PRODUCTOS POR TIPO DE VEHÍCULO</h3>
-      <ul>
+      <h3>NEUMATICOS</h3> <ul>
         <li><a href="#" class="footer-link">Autos</a></li>
         <li><a href="#" class="footer-link">Camionetas/SUV</a></li>
         <li><a href="#" class="footer-link">Camiones/Buses</a></li>
@@ -100,8 +95,7 @@
     </div>
 
     <div class="footer-section">
-      <h3>CÓMO COMPRAR</h3>
-      <ul>
+      <h3>MANTENIMIENTO</h3> <ul>
         <li><a href="#" class="footer-link">Guía de Compra</a></li>
         <li><a href="#" class="footer-link">Encontrar Tienda/Sucursal</a></li>
         <li><a href="#" class="footer-link">Promociones y Ofertas</a></li>

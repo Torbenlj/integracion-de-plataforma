@@ -1,92 +1,398 @@
-.carrito-container {
-  padding: 20px;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  color: #333;
+/* src/app/carrito/carrito.component.css */
+
+.carrito-page-wrapper {
+  padding: 30px 20px; /* Padding general para toda la página del carrito */
+  max-width: 1200px; /* Ancho máximo para centrar el contenido */
+  margin: 20px auto; /* Centra el wrapper en la página */
+  background-color: #f0f2f5; /* Color de fondo ligero para la página del carrito */
+  border-radius: 8px; /* Bordes redondeados para el contenedor principal */
 }
 
-.carrito-container h1 {
-  font-family: 'Oswald', sans-serif;
-  color: #212121;
-  margin-bottom: 20px;
+.carrito-titulo {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2.2em;
+  font-weight: 700;
+}
+
+.carrito-content-row {
+  /* No necesitamos display:flex aquí, Bootstrap .row ya es flex */
+  /* Ajustamos el margen negativo de Bootstrap para que no haya desborde */
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/* --- ESTILOS PARA LA COLUMNA DE ÍTEMS (IZQUIERDA) --- */
+.carrito-items-column {
+  background-color: #ffffff; /* Fondo blanco para la tarjeta de ítems */
+  padding: 25px; /* Padding interno de la tarjeta */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra suave para la tarjeta */
+  margin-bottom: 20px; /* Margen inferior para móviles */
 }
 
 .carrito-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.carrito-list li {
-  border: 1px solid #E0E0E0;
-  margin-bottom: 15px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
+.carrito-item-card {
+  display: flex; /* Para organizar imagen, detalles, cantidad y precios horizontalmente */
+  align-items: center; /* Centra verticalmente los elementos */
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee; /* Separador entre ítems */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  position: relative; /* Para posicionar el botón de eliminar */
 }
 
-.carrito-list li img {
-  max-width: 80px;
-  margin-right: 15px;
+.carrito-item-card:last-child {
+  border-bottom: none; /* No hay separador en el último ítem */
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
-.item-info {
-  flex-grow: 1;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+.item-image-wrapper {
+  flex-shrink: 0; /* No permite que la imagen se encoja */
+  width: 100px; /* Ancho fijo para la imagen */
+  height: 100px; /* Altura fija para la imagen */
   margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Asegura que la imagen no se desborde */
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
 }
 
-.quantity-controls button {
-  background: none;
-  border: 1px solid #003F80;
-  color: #003F80;
-  width: 30px;
+.item-thumbnail {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
+}
+
+.item-details {
+  flex-grow: 1; /* Permite que los detalles ocupen el espacio restante */
+  margin-right: 20px;
+  min-width: 150px; /* Ancho mínimo para que los detalles no se compriman demasiado */
+}
+
+.item-name {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.item-id, .item-description {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.item-quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 5px;
+  height: 36px; /* Altura para alinear con botones de Material */
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.item-quantity-controls button {
+  min-width: 30px; /* Ancho mínimo para los botones de Material */
   height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  margin: 0 5px;
+  padding: 0;
+  line-height: 1; /* Ajusta la altura de línea para centrar el icono */
+  border: none; /* Quitamos el borde predeterminado */
+}
+
+.item-quantity-display {
+  font-weight: 500;
+  padding: 0 10px;
+  min-width: 25px; /* Asegura espacio para la cantidad */
+  text-align: center;
+}
+
+.item-prices {
+  flex-shrink: 0; /* No permite que los precios se encojan */
+  text-align: right;
+  min-width: 150px; /* Ancho mínimo para los precios */
+}
+
+.price-transferencia {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #003F80; /* Azul de tu marca */
+  margin-bottom: 2px;
+}
+
+.price-otros-medios {
+  font-size: 0.9em;
+  color: #666;
+  text-decoration: line-through; /* Para mostrar que es el precio original si la transferencia es oferta */
+}
+
+.item-actions {
+  position: absolute; /* Posiciona el botón de eliminar */
+  top: 0px; /* Ajusta según sea necesario */
+  right: 0px;
 }
 
 .remove-button {
   background: none;
   border: none;
-  color: #757575;
+  color: #dc3545; /* Color rojo para eliminar */
+  font-size: 0.9em;
   cursor: pointer;
-  margin-left: auto;
+  padding: 5px;
+  transition: color 0.3s ease;
 }
 
-.carrito-total {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #E0E0E0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+.remove-button:hover {
+  color: #a71d2a;
 }
 
-.carrito-total p {
-  font-size: 1.2em;
-  font-weight: 500;
-  margin-right: 20px;
-}
-
-.carrito-total button {
-  background-color: #FEDB00 !important;
-  color: #333333 !important;
-}
-
-.carrito-vacio {
-  text-align: center;
-  padding: 20px;
-  border: 1px solid #E0E0E0;
-  margin-top: 20px;
-}
-
-.carrito-vacio a {
+.vaciar-carrito-button {
+  background: none;
+  border: 1px solid #003F80; /* Borde azul de tu marca */
   color: #003F80;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.vaciar-carrito-button:hover {
+  background-color: #003F80;
+  color: #ffffff;
+}
+
+/* --- ESTILOS PARA LA COLUMNA DE RESUMEN (DERECHA) --- */
+.carrito-summary-column {
+  background-color: #ffffff; /* Fondo blanco para la tarjeta de resumen */
+  padding: 25px; /* Padding interno de la tarjeta */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Sombra suave para la tarjeta */
+  /* Elimina el margen inferior si ya está cubierto por el col-12 en móviles */
+}
+
+.carrito-summary-card {
+  /* Este div ya está dentro de .carrito-summary-column, no necesita muchos estilos de caja a menos que sea un wrapper extra */
+}
+
+.summary-title {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.summary-line p {
+  margin: 0; /* Elimina márgenes de párrafo dentro de la línea */
+}
+
+.summary-line .info-icon {
+  font-size: 1.1em; /* Tamaño del icono de información */
+  margin-left: 5px;
+  color: #003F80; /* Color del icono de información */
+  cursor: help; /* Indica que es un tooltip */
+}
+
+.summary-value {
+  font-weight: bold;
+  color: #003F80; /* Azul de tu marca para los valores totales */
+  font-size: 1.2em;
+}
+
+.shipping-info {
+  display: flex;
+  align-items: flex-start; /* Alinea el icono y texto en la parte superior */
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eeeeee; /* Separador */
+  color: #777;
+  font-size: 0.95em;
+}
+
+.shipping-info mat-icon {
+  margin-right: 8px;
+  font-size: 1.4em;
+  color: #555;
+}
+
+.shipping-info p {
+  margin: 0;
+  line-height: 1.4; /* Espaciado de línea para el texto de envío */
+}
+
+.add-products-button, .continue-button {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-transform: uppercase; /* Generalmente los botones de acción son en mayúsculas */
+}
+
+.add-products-button {
+  background-color: #FEDB00; /* Amarillo de tu marca */
+  color: #333;
+  margin-top: 25px; /* Espacio antes del botón de agregar */
+  border: none;
+}
+
+.add-products-button:hover {
+  background-color: #e0c800; /* Un tono más oscuro de amarillo */
+}
+
+.continue-button {
+  background-color: #003F80; /* Azul de tu marca */
+  color: #ffffff;
+  margin-top: 15px; /* Espacio entre botones */
+  border: none;
+}
+
+.continue-button:hover {
+  background-color: #002e60; /* Un tono más oscuro de azul */
+}
+
+/* --- ESTILOS PARA EL CARRITO VACÍO --- */
+.carrito-vacio-state {
+  text-align: center;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.carrito-vacio-state p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.carrito-vacio-state .btn-primary {
+  background-color: #003F80;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 5px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.carrito-vacio-state .btn-primary:hover {
+  background-color: #002e60;
+}
+
+
+/* --- MEDIA QUERIES (RESPONSIVIDAD) --- */
+
+@media (max-width: 767px) {
+  .carrito-page-wrapper {
+    padding: 20px 10px;
+    margin-top: 15px; /* Ajusta el margen superior en móviles si es necesario */
+  }
+
+  .carrito-titulo {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+
+  /* Bootstrap ya apila las columnas .col-12 en móviles, así que solo ajustamos sus paddings/margins */
+  .carrito-items-column, .carrito-summary-column {
+    padding: 15px; /* Menor padding en móviles */
+    margin-bottom: 15px; /* Margen entre las columnas apiladas */
+  }
+
+  .carrito-item-card {
+    flex-direction: column; /* Apila los elementos del producto en vertical */
+    align-items: flex-start; /* Alinea al inicio cuando están apilados */
+    text-align: left;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+
+  .item-image-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-right: 0;
+    margin-bottom: 10px; /* Espacio debajo de la imagen */
+  }
+
+  .item-details {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+
+  .item-quantity-controls {
+    width: 100%; /* Ocupa todo el ancho */
+    justify-content: center; /* Centra los controles de cantidad */
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .item-prices {
+    width: 100%; /* Ocupa todo el ancho */
+    text-align: left; /* Alinea los precios a la izquierda */
+    margin-bottom: 10px;
+  }
+
+  .item-actions {
+    position: static; /* Vuelve a posición normal para no flotar */
+    width: 100%;
+    text-align: right;
+  }
+
+  .remove-button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .summary-title {
+    font-size: 1.4em;
+  }
+
+  .summary-line, .shipping-info {
+    font-size: 1em;
+  }
+
+  .continue-button, .add-products-button {
+    font-size: 1em;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carrito-page-wrapper {
+    padding: 15px 10px;
+  }
+  .carrito-titulo {
+    font-size: 1.6em;
+  }
 }
