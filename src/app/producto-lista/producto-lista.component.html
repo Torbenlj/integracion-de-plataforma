@@ -1,33 +1,34 @@
 <div class="products-container">
   <h1 class="products-title">Nuestros Productos</h1>
-
   <div class="product-grid">
-    <div *ngFor="let producto of productos" class="product-card">
-      <div class="product-image-wrapper">
-        <img [src]="producto.imagenUrl" alt="{{ producto.nombre }}" class="product-image">
-      </div>
-      <div class="product-info">
-        <h2 class="product-name">{{ producto.nombre }}</h2>
-        <p class="product-description">{{ producto.descripcion }}</p>
-        <div class="product-meta">
-          <span class="product-category">Categoría: {{ producto.categoria }}</span>
-          <span class="product-brand">Marca: {{ producto.marca }}</span>
-        </div>
-      </div>
-      <div class="product-prices">
-        <p class="price-transferencia">{{ producto.precioTransferencia | currency:'CLP':'symbol':'1.0-0' }} Transferencia</p>
-        <p class="price-otros-medios">{{ producto.precioOtrosMedios | currency:'CLP':'symbol':'1.0-0' }} Otros medios de pago</p>
-      </div>
-      <div class="product-actions">
-        <button mat-raised-button color="primary" (click)="agregarAlCarrito(producto)">
-          <mat-icon>shopping_cart</mat-icon> Añadir al Carrito
-        </button>
-      </div>
+    <div *ngIf="productos.length > 0; else sinProductos">
+      <ul>
+        <li *ngFor="let producto of productos">
+          <div class="product-image-wrapper">
+            <img [src]="producto.imagen" alt="{{ producto.nombre_producto }}"
+              class="w-full h-full object-cover rounded-t-xl"
+              onerror="this.onerror=null;this.src='https://placehold.co/400x300/E0F2F7/000000?text=Imagen+no+disponible';">
+          </div>
+          <div class="product-info">
+            <h3>{{ producto.nombre_producto }}</h3>
+            <p>Precio B2C: {{ producto.precio_b2c | currency }}</p>
+            <p>Descripción: {{ producto.descripcion_producto }}</p>
+            <p>SKU: {{ producto.sku }}</p>
+          </div>
+          <div class="product-prices">
+            <p class="price-Tiendas">{{ producto.precio_b2b | currency:'CLP':'symbol':'1.0-0' }}
+              Precio mayoritario</p>
+            <p class="price-cliente">{{ producto.precio_b2c | currency:'CLP':'symbol':'1.0-0' }} Precio cliente</p>
+          </div>
+          <button mat-raised-button color="primary">
+            <mat-icon>add_shopping_cart</mat-icon> Agregar al carrito
+          </button>
+        </li>
+      </ul>
     </div>
-  </div>
 
-  <div *ngIf="productos.length === 0" class="no-products-message">
-    <p>No hay productos disponibles en este momento.</p>
-    <a routerLink="/" mat-flat-button color="accent">Volver al Inicio</a>
+    <ng-template #sinProductos>
+      <p>No hay productos disponibles.</p>
+    </ng-template>
   </div>
 </div>
